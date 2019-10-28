@@ -9,11 +9,30 @@
 //   downvoteQuote(quoteId: INteger)
 //     4) should return an Object with a type of "DOWNVOTE_QUOTE" and a quoteId
 
-function addQuote(quote){
-  return [...state, quote]
+export const addQuote = quote => {
+  return {
+    type: 'ADD_QUOTE',
+    quote: Object.assign({}, quote, {votes: 0})
+  }
 }
 
-function removeQuote(quote){
-  let idx = state.findIndex(q => q.id === quote.id);
-  return [...state.slice(0, idx), ...state.slice(inx + 1)];
+export const removeQuote = quoteId => {
+  return {
+    type: 'REMOVE_QUOTE',
+    quoteId
+  }
+}
+
+export const upvoteQuote = quoteId => {
+  return {
+    type: 'UPVOTE_QUOTE',
+    quoteId
+  }
+}
+
+export const downvoteQuote = quoteId => {
+  return {
+    type: 'DOWNVOTE_QUOTE',
+    quoteId
+  }
 }
